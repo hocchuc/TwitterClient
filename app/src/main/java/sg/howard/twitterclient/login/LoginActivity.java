@@ -1,5 +1,6 @@
 package sg.howard.twitterclient.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.twitter.sdk.android.core.Callback;
@@ -31,5 +32,12 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Pass the activity result to the login button.
+        loginButton.onActivityResult(requestCode, resultCode, data);
     }
 }
