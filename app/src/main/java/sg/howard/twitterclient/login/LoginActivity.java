@@ -3,6 +3,8 @@ package sg.howard.twitterclient.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.twitter.sdk.android.core.Callback;
@@ -10,7 +12,6 @@ import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
-import com.twitter.sdk.android.tweetui.Timeline;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,8 @@ import sg.howard.twitterclient.timeline.TimelineActivity;
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     TwitterLoginButton loginButton;
     LoginContract.Presenter presenter;
+    protected ProgressBar loader;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     private void setUpView() {
+        loader = findViewById(R.id.loader);
         loginButton = findViewById(R.id.login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
@@ -65,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showLoading(boolean isShow) {
+        loader.setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
     @Override

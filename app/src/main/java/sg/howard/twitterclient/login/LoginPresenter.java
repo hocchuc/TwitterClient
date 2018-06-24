@@ -3,13 +3,12 @@ package sg.howard.twitterclient.login;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterSession;
 
-import sg.howard.twitterclient.model.User;
 import sg.howard.twitterclient.util.SharedPreferenceHelper;
 
 public class LoginPresenter implements LoginContract.Presenter {
     LoginContract.View view;
 
-    public LoginPresenter(LoginContract.View view){
+    public LoginPresenter(LoginContract.View view) {
         this.view = view;
         view.setPresenter(this);
     }
