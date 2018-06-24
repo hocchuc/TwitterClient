@@ -15,8 +15,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,6 +31,22 @@ android {
             buildConfigField("String", "CONSUMER_KEY", '"ybU8faweMNURmbrHv4U3Q99i7"')
             buildConfigField("String", "CONSUMER_SECRET", '"SJvgNY3mcjzHAP7461EUs0aHJe2O6WlAzYKT3s6ZcjGgpWAxmF"')
         }
+        prod{
+
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('../twitterclient.jks')
+            storePassword "vinova123"
+            keyAlias "twitterclient"
+            keyPassword "vinova123"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 

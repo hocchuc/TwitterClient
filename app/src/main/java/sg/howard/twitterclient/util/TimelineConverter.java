@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sg.howard.twitterclient.model.TimelineItem;
+import sg.howard.twitterclient.model.User;
 
 public final class TimelineConverter {
 

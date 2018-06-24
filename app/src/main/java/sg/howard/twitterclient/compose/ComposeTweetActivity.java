@@ -7,6 +7,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.models.Tweet;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import sg.howard.twitterclient.R;
@@ -23,7 +27,9 @@ public class ComposeTweetActivity extends AppCompatActivity implements ComposeCo
         btnSend = findViewById(R.id.btnSend);
         edtCompose = findViewById(R.id.edtCompose);
         loader = findViewById(R.id.loader);
-        presenter = new ComposeTweetPresenter(this);
+        presenter = new ComposeTweetPresenter(this, TwitterCore.getInstance().getSessionManager().getActiveSession());
+
+        btnSend.setOnClickListener( view -> presenter.sendTweet(edtCompose.getText().toString()));
     }
 
     @Override
@@ -41,5 +47,9 @@ public class ComposeTweetActivity extends AppCompatActivity implements ComposeCo
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-
+    @Override
+    public void sendTweetSuccess(Result<Tweet> result) {
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        finish();
+    }
 }
