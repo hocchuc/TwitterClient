@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "sg.howard.twitterclient"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "mode"
+    productFlavors {
+        dev {
+            buildConfigField("String", "API_KEY", '"bc5382a1591a9a2e2fdf06b9952cca83"')
+            buildConfigField("String", "CONSUMER_KEY", '"ybU8faweMNURmbrHv4U3Q99i7"')
+            buildConfigField("String", "CONSUMER_SECRET", '"SJvgNY3mcjzHAP7461EUs0aHJe2O6WlAzYKT3s6ZcjGgpWAxmF"')
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-alpha1'
+
+    implementation 'com.google.code.gson:gson:2.2.4'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit-converters:2.4.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    implementation 'com.twitter.sdk.android:twitter:3.3.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha1'
+
+}
