@@ -27,9 +27,8 @@ android {
     flavorDimensions "mode"
     productFlavors {
         dev {
-            buildConfigField("String", "API_KEY", '"bc5382a1591a9a2e2fdf06b9952cca83"')
-            buildConfigField("String", "CONSUMER_KEY", '"ybU8faweMNURmbrHv4U3Q99i7"')
-            buildConfigField("String", "CONSUMER_SECRET", '"SJvgNY3mcjzHAP7461EUs0aHJe2O6WlAzYKT3s6ZcjGgpWAxmF"')
+            buildConfigField("String", "TOKEN", '"2346926630-Encn9h69lSkd19XGhNfkEesOt9BwtOaeg7xj5Dc"')
+            buildConfigField("String", "TOKEN_SECRECT", '"JDOjy27WGfS3LlH66l4dMfDGrC4D7gugg1MXYrlWsVK3x"')
         }
         prod{
 
