@@ -5,5 +5,5 @@ public interface BaseView<T> {
 
     void showLoading(boolean isShow);
 
-    void showError();
+    void showError(String message);
 }
