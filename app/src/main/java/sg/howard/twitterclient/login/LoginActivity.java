@@ -43,6 +43,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         setUpView();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (TwitterCore.getInstance().getSessionManager().getActiveSession() != null){
+            saveUserSuccess();
+        }
+    }
+
     private void setUpView() {
         loader = findViewById(R.id.loader);
         loginButton = findViewById(R.id.login_button);
