@@ -82,8 +82,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             final TwitterAuthClient twitterAuthClient = new TwitterAuthClient();
             if(twitterAuthClient.getRequestCode()==requestCode) {
                 Boolean twitterLoginWasCanceled = (resultCode == RESULT_CANCELED);
-                if(twitterLoginWasCanceled)
-                    twitterAuthClient.onActivityResult(requestCode, resultCode, data);
+                if(!twitterLoginWasCanceled)
+                    loginButton.onActivityResult(requestCode, resultCode, data);
                 else
                     endAuthorizeInProgress();
             }
